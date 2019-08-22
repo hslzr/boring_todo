@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import TodoForm from './TodoForm'
+import TodoList from './TodoList'
+
+export default class App extends React.Component {
+
+  state = {
+    tasks: [
+      {title: "demo DEMO", text: "skdjfhksdjhf"},
+      {title: "demo DEMO", text: "skdjfhksdjhf"},
+      {title: "demo DEMO", text: "skdjfhksdjhf"},
+      {title: "demo DEMO", text: "skdjfhksdjhf"},
+      {title: "demo DEMO", text: "skdjfhksdjhf"},
+      {title: "demo DEMO", text: "skdjfhksdjhf"},
+      {title: "demo DEMO", text: "skdjfhksdjhf"},
+    ]
+  }
+
+  render() {
+    return(
+      <div className="sans-serif">
+        <header className="db mw8 pa2 ph3 center mt3">
+          <h1 className="ma0">Henlo, fren</h1>
+        </header>
+        <TodoForm />
+        <TodoList tasks={this.state.tasks} />
+      </div>
+    )
+  }
 }
-
-export default App;

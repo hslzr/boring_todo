@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const Todo = (props) => {
   return (
-    <li className="pa3 bb b--light-silver">
-      <h4>{props.task.title}</h4>
+    <li className="br2 bg-light-gray ph3 pv2 mb2">
       <p>{props.task.text}</p>
     </li>
   )

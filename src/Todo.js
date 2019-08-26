@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Todo = (props) => {
+  
+  const [completed, setCompleted] = useState(false)
+
+  const handleClick = () => {
+    setCompleted( !completed )
+  }
+
   return (
-    <li className="br2 bg-light-gray ph3 pv2 mb2">
+    <li
+      onClick={handleClick}
+      className={"br2 ph3 pv2 mb2 " + (completed ? 'strike bg-near-white silver' : 'bg-light-gray near-black') }>
       <p>{props.task.text}</p>
     </li>
   )

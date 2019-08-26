@@ -12,13 +12,26 @@ const App = () => {
     setTasks([...tasks, {index: current_ts, text: todoText, completed: false}])
   }
 
+  const updateTask = (taskIndex) => {
+  }
+
+  const findTask = (taskIndex) => {
+    let taskFound = tasks.find(task => task.index === taskIndex)
+    if (taskFound === undefined) {
+      console.error("No task found. Why? idk. You passed: " + taskIndex)
+      return undefined
+    }
+
+    return taskFound
+  }
+
   return(
     <div className="sans-serif">
       <header className="db mw7 pv2 ph3 mt3 center">
         <h1 className="ma0">Henlo, fren</h1>
       </header>
       <TodoForm onSubmit={addTodo} />
-      <TodoList tasks={tasks} />
+      <TodoList tasks={tasks} onUpdate={updateTask} />
     </div>
   )
 }

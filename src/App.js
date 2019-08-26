@@ -3,27 +3,23 @@ import React from 'react'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 
-export default class App extends React.Component {
+const App = () => {
 
-  state = {
-    tasks: []
+  const [tasks, setTasks] = React.useState([])
+
+  const addTodo = (todoText) => {
+    setTasks([...tasks, {text: todoText, completed: false}])
   }
 
-  addTodo = (todo) => {
-    this.setState(prevState => ({
-      tasks: [...prevState.tasks, {text: todo}]
-    }))
-  }
-
-  render() {
-    return(
-      <div className="sans-serif">
-        <header className="db mw8 pa2 ph4 center mt3">
-          <h1 className="ma0">Henlo, fren</h1>
-        </header>
-        <TodoForm onSubmit={this.addTodo} />
-        <TodoList tasks={this.state.tasks} />
-      </div>
-    )
-  }
+  return(
+    <div className="sans-serif">
+      <header className="db mw7 pv2 ph3 mt3 center">
+        <h1 className="ma0">Henlo, fren</h1>
+      </header>
+      <TodoForm onSubmit={addTodo} />
+      <TodoList tasks={tasks} />
+    </div>
+  )
 }
+
+export default App

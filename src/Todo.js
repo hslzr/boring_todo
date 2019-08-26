@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const Todo = (props) => {
   
-  const [completed, setCompleted] = useState(false)
+  const [completed, setCompleted] = useState(props.task.completed)
 
   const handleClick = () => {
     setCompleted( !completed )

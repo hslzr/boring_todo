@@ -12,10 +12,10 @@ export default class TodoForm extends React.Component {
 
   render() {
     return(
-      <div className="pa4-l pa3" >
+      <div className="pa4-l pa3 center" >
         <form 
           onSubmit={this.handleSubmit}
-          className="bg-light-gray mw7 pa4 br2-ns" >
+          className="bg-light-gray mw7 pa4 br2-ns center" >
           <fieldset className="cf bn ma0 pa0">
             <legend className="pa0 f5 f4-ns mb3 black-8" > Add a task </legend>
             <div className="cf">

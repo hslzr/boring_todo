@@ -8,7 +8,8 @@ const App = () => {
   const [tasks, setTasks] = React.useState([])
 
   const addTodo = (todoText) => {
-    setTasks([...tasks, {text: todoText, completed: false}])
+    let current_ts = (new Date()).getTime()
+    setTasks([...tasks, {index: current_ts, text: todoText, completed: false}])
   }
 
   return(

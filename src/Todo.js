@@ -23,6 +23,7 @@ const Todo = (props) => {
           onChange={() =>{}} />
       </div>
       <div
+        onClick={() => props.deleteTask(props.task.index) }
         className="br2 pa3 pointer mb2 ml2 dim bg-near-white red">
         Del
       </div>

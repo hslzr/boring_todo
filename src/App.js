@@ -19,6 +19,15 @@ const App = () => {
   }
 
   const updateTask = (taskIndex) => {
+    // TODO
+  }
+
+  const deleteTask = (taskIndex) => {
+    setTasks( tasks.filter(item => item.index !== taskIndex) )
+  }
+
+  const clearTasks = () => {
+    setTasks([])
   }
 
   const findTask = (taskIndex) => {
@@ -37,7 +46,11 @@ const App = () => {
         <h1 className="ma0">Henlo, fren</h1>
       </header>
       <TodoForm onSubmit={addTodo} />
-      <TodoList tasks={tasks} onUpdate={updateTask} />
+      <TodoList
+        tasks={tasks}
+        onUpdate={updateTask}
+        deleteTask={deleteTask}
+        clearTasks={clearTasks} />
     </div>
   )
 }

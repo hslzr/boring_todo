@@ -3,9 +3,15 @@ import React from 'react'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 
+const InitialTasks = [
+  {index: 2134, text: 'Demo 1', completed: false},
+  {index: 2135, text: 'Demo 2', completed: false},
+  {index: 2136, text: 'Demo 3', completed: false},
+]
+
 const App = () => {
 
-  const [tasks, setTasks] = React.useState([])
+  const [tasks, setTasks] = React.useState(InitialTasks)
 
   const addTodo = (todoText) => {
     let current_ts = (new Date()).getTime()

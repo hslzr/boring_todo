@@ -27,6 +27,7 @@ const Todo = (props) => {
           style={{outline: 0, resize: 'none'}}
           onChange={handleChange}
           value={props.task.text}
+          disabled={props.task.completed}
           className={"pa2 bn w-100 " + (props.task.completed ? 'bg-near-white silver strike' : 'bg-light-gray near-black')}>
         </textarea>
       </div>

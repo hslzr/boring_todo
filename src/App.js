@@ -1,7 +1,11 @@
 import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
+import NavigationBar from './NavigationBar'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
+
+import AboutScreen from './pages/About'
 
 const InitialTasks = [
   {index: 2134, text: 'Demo 1', completed: false},
@@ -11,15 +15,18 @@ const InitialTasks = [
 
 const App = () => {
 
+  // Set initial state
   const [tasks, setTasks] = React.useState(
     JSON.parse(localStorage.getItem('localTasks')) || InitialTasks
   )
 
+  // Add tasks to the state array
   const addTodo = (todoText) => {
     let current_ts = (new Date()).getTime()
     setTasks([...tasks, {index: current_ts, text: todoText, completed: false}])
   }
 
+  // Update a task
   const updateTask = (targetTask) => {
     setTasks(tasks.map(task => {
       if (task.index === targetTask.index) {
@@ -30,12 +37,27 @@ const App = () => {
     }))
   }
 
+  // Delete a task
   const deleteTask = (taskIndex) => {
-    setTasks( tasks.filter(item => item.index !== taskIndex) )
+    setTasks(tasks.filter(item => item.index !== taskIndex))
   }
 
+  // Clear all tasks
   const clearTasks = () => {
     setTasks([])
+  }
+
+  const MainScreen = () => {
+    return(
+      <div>
+        <TodoForm onSubmit={addTodo} />
+        <TodoList
+          tasks={tasks}
+          onUpdate={updateTask}
+          deleteTask={deleteTask}
+          clearTasks={clearTasks} />
+      </div>
+    )
   }
 
   React.useEffect(() => {
@@ -44,15 +66,14 @@ const App = () => {
 
   return(
     <div className="sans-serif">
-      <header className="db mw7 pv2 ph3 mt3 center">
-        <h1 className="ma0">Henlo, fren</h1>
-      </header>
-      <TodoForm onSubmit={addTodo} />
-      <TodoList
-        tasks={tasks}
-        onUpdate={updateTask}
-        deleteTask={deleteTask}
-        clearTasks={clearTasks} />
+      <Router>
+        <NavigationBar />
+        <header className="db mw7 pv2 ph3 mt3 center">
+          <h1 className="ma0">Henlo, fren</h1>
+        </header>
+        <Route path="/" component={MainScreen} />
+        <Route path="about" component={AboutScreen} />
+      </Router>
     </div>
   )
 }

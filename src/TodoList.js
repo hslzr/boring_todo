@@ -3,7 +3,16 @@ import Todo from './Todo'
 
 const TodoList = (props) => {
 
-  const handleClick = () => {
+  const renderTodos = (tasks) => {
+    return tasks.map((task) => {
+      return(
+        <Todo 
+        task={task}
+        key={task.index}
+        deleteTask={props.deleteTask}
+        updateTask={props.updateTask} />
+      )
+    })
   }
 
   return(
@@ -16,8 +25,8 @@ const TodoList = (props) => {
           Clear Tasks
         </button>
       </div>
-      <ul className="list pl0 ml0 mw7 b--light-silver br2 center" >
-        {props.tasks.map((task) => <Todo task={task} key={task.index} deleteTask={props.deleteTask} />)}
+      <ul className="list pl0 ml0 mw7 b--light-silver br2 center">
+        {renderTodos(props.tasks)}
       </ul>
     </div>
   )

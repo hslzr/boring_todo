@@ -18,8 +18,14 @@ const App = () => {
     setTasks([...tasks, {index: current_ts, text: todoText, completed: false}])
   }
 
-  const updateTask = (taskIndex) => {
-    // TODO
+  const updateTask = (targetTask) => {
+    setTasks( tasks.map(task => {
+      if (task.index === targetTask.index) {
+        return targetTask
+      } else {
+        return task
+      }
+    }))
   }
 
   const deleteTask = (taskIndex) => {
@@ -28,16 +34,6 @@ const App = () => {
 
   const clearTasks = () => {
     setTasks([])
-  }
-
-  const findTask = (taskIndex) => {
-    let taskFound = tasks.find(task => task.index === taskIndex)
-    if (taskFound === undefined) {
-      console.error("No task found. Why? idk. You passed: " + taskIndex)
-      return undefined
-    }
-
-    return taskFound
   }
 
   return(

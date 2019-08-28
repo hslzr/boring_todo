@@ -10,7 +10,7 @@ const TodoList = (props) => {
         task={task}
         key={task.index}
         deleteTask={props.deleteTask}
-        updateTask={props.updateTask} />
+        updateTask={props.onUpdate} />
       )
     })
   }

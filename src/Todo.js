@@ -24,13 +24,12 @@ const Todo = (props) => {
       <div
         className={"br2 ph3 pv1 mb2 " + (completed ? 'bg-near-white' : 'bg-light-gray')}
         style={{flexGrow: 2}}>
-        <input
-          className={"pa2 bn " + (completed ? 'bg-near-white silver strike' : 'bg-light-gray near-black')}
+        <textarea
+          style={{outline: 0, resize: 'none'}}
+          onChange={handleChange}
           value={props.task.text}
-          //disabled={ !completed }
-          //readOnly={completed}
-          style={{outline: 0}}
-          onChange={handleChange} />
+          className={"pa2 bn w-100 " + (completed ? 'bg-near-white silver strike' : 'bg-light-gray near-black')}>
+        </textarea>
       </div>
       <div
         onClick={() => props.deleteTask(props.task.index) }

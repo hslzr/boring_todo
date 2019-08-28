@@ -11,7 +11,9 @@ const InitialTasks = [
 
 const App = () => {
 
-  const [tasks, setTasks] = React.useState(InitialTasks)
+  const [tasks, setTasks] = React.useState(
+    JSON.parse(localStorage.getItem('localTasks')) || InitialTasks
+  )
 
   const addTodo = (todoText) => {
     let current_ts = (new Date()).getTime()
@@ -19,7 +21,7 @@ const App = () => {
   }
 
   const updateTask = (targetTask) => {
-    setTasks( tasks.map(task => {
+    setTasks(tasks.map(task => {
       if (task.index === targetTask.index) {
         return targetTask
       } else {
@@ -35,6 +37,10 @@ const App = () => {
   const clearTasks = () => {
     setTasks([])
   }
+
+  React.useEffect(() => {
+    localStorage.setItem('localTasks', JSON.stringify(tasks))
+  }, [tasks])
 
   return(
     <div className="sans-serif">

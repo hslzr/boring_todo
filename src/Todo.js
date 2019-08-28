@@ -7,6 +7,8 @@ const Todo = (props) => {
 
   const completeTask = () => {
     setCompleted( !completed )
+    props.task.completed = completed
+    props.updateTask(props.task)
   }
 
   const handleChange = (event) => {

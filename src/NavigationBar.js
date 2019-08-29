@@ -11,8 +11,8 @@ export default () => {
         <NavLink activeClassName="is-active" to="/about" className="f6 f5-l link near-white dib pa3">
           About
         </NavLink>
-        <NavLink activeClassName="is-active" to="dientes" className="f6 f5-l link near-white dib pa3">
-          Arte
+        <NavLink activeClassName="is-active" to="/art" className="f6 f5-l link near-white dib pa3">
+          Art
         </NavLink>
       </nav>
     </header>

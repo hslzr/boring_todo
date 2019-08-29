@@ -6,6 +6,7 @@ import TodoForm from './TodoForm'
 import TodoList from './TodoList'
 
 import AboutScreen from './pages/About'
+import ArtScreen from './pages/Art'
 
 const InitialTasks = [
   {index: 2134, text: 'Demo 1', completed: false},
@@ -15,39 +16,42 @@ const InitialTasks = [
 
 const App = () => {
 
-  // Set initial state
-  const [tasks, setTasks] = React.useState(
-    JSON.parse(localStorage.getItem('localTasks')) || InitialTasks
-  )
-
-  // Add tasks to the state array
-  const addTodo = (todoText) => {
-    let current_ts = (new Date()).getTime()
-    setTasks([...tasks, {index: current_ts, text: todoText, completed: false}])
-  }
-
-  // Update a task
-  const updateTask = (targetTask) => {
-    setTasks(tasks.map(task => {
-      if (task.index === targetTask.index) {
-        return targetTask
-      } else {
-        return task
-      }
-    }))
-  }
-
-  // Delete a task
-  const deleteTask = (taskIndex) => {
-    setTasks(tasks.filter(item => item.index !== taskIndex))
-  }
-
-  // Clear all tasks
-  const clearTasks = () => {
-    setTasks([])
-  }
-
   const MainScreen = () => {
+    const [tasks, setTasks] = React.useState(
+      JSON.parse(localStorage.getItem('localTasks')) || InitialTasks
+    )
+
+    // Add tasks to the state array
+    const addTodo = (todoText) => {
+      let current_ts = (new Date()).getTime()
+      setTasks([...tasks, {index: current_ts, text: todoText, completed: false}])
+    }
+
+    // Update a task
+    const updateTask = (targetTask) => {
+      setTasks(tasks.map(task => {
+        if (task.index === targetTask.index) {
+          return targetTask
+        } else {
+          return task
+        }
+      }))
+    }
+
+    // Delete a task
+    const deleteTask = (taskIndex) => {
+      setTasks(tasks.filter(item => item.index !== taskIndex))
+    }
+
+    // Clear all tasks
+    const clearTasks = () => {
+      setTasks([])
+    }
+
+    React.useEffect(() => {
+      localStorage.setItem('localTasks', JSON.stringify(tasks))
+    }, [tasks])
+
     return(
       <div>
         <TodoForm onSubmit={addTodo} />
@@ -60,9 +64,6 @@ const App = () => {
     )
   }
 
-  React.useEffect(() => {
-    localStorage.setItem('localTasks', JSON.stringify(tasks))
-  }, [tasks])
 
   return(
     <div className="sans-serif">
@@ -73,6 +74,7 @@ const App = () => {
         </header>
         <Route exact path="/" component={MainScreen} />
         <Route path="/about" component={AboutScreen} />
+        <Route path="/art" component={ArtScreen} />
       </Router>
     </div>
   )

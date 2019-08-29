@@ -13,6 +13,8 @@ export default () => {
       <ul className="ml0">
         <li><a href="https://github.com/feathericons/react-feather">react-feather</a>, for some icons.</li>
         <li><a href="ihttps://reacttraining.com/react-router/web/guides/quick-start">react-router</a>, for navigation across pages.</li>
+        <li><a href="https://tachyons.io">Tachyons</a>, for CSS styling</li>
+        <li><a href="https://github.com/axios/axios">Axios</a>, for XMLHttpRequests</li>
       </ul>
     </div>
   )

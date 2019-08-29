@@ -71,8 +71,8 @@ const App = () => {
         <header className="db mw7 pv2 ph3 mt3 center">
           <h1 className="ma0">Henlo, fren</h1>
         </header>
-        <Route path="/" component={MainScreen} />
-        <Route path="about" component={AboutScreen} />
+        <Route exact path="/" component={MainScreen} />
+        <Route path="/about" component={AboutScreen} />
       </Router>
     </div>
   )

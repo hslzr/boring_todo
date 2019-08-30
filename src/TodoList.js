@@ -4,13 +4,13 @@ import Todo from './Todo'
 const TodoList = (props) => {
 
   const renderTodos = (tasks) => {
-    return tasks.map((task) => {
+    return Object.entries(tasks).map(elem => {
       return(
-        <Todo 
-        task={task}
-        key={task.index}
-        deleteTask={props.deleteTask}
-        updateTask={props.onUpdate} />
+        <Todo
+          task={elem[1]}
+          key={elem[0]}
+          deleteTask={props.deleteTask}
+          updateTask={props.onUpdate} />
       )
     })
   }

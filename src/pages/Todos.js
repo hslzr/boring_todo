@@ -4,25 +4,25 @@ import TodoForm from '../TodoForm'
 import TodoList from '../TodoList'
 
 
-const InitialTasks = [
-  {index: 2134, text: 'Demo 1', completed: false},
-  {index: 2135, text: 'Demo 2', completed: false},
-  {index: 2136, text: 'Demo 3', completed: false},
-]
+const initialTasks = {
+  2134: {text: 'Demo 1', completed: false},
+  2135: {text: 'Demo 2', completed: false},
+  2136: {text: 'Demo 3', completed: false}
+}
 
 
 export default () => {
   const [tasks, setTasks] = React.useState(
-    JSON.parse(localStorage.getItem('localTasks')) || InitialTasks
+    JSON.parse(localStorage.getItem('localTasks')) || initialTasks
   )
 
-  // Add tasks to the state array
   const addTodo = (todoText) => {
     let current_ts = (new Date()).getTime()
-    setTasks([...tasks, {index: current_ts, text: todoText, completed: false}])
+    let stateCopy = Object.assign({}, tasks)
+    stateCopy[current_ts] = {text: todoText, completed: false }
+    setTasks(stateCopy)
   }
 
-  // Update a task
   const updateTask = (targetTask) => {
     setTasks(tasks.map(task => {
       if (task.index === targetTask.index) {
@@ -33,14 +33,12 @@ export default () => {
     }))
   }
 
-  // Delete a task
   const deleteTask = (taskIndex) => {
     setTasks(tasks.filter(item => item.index !== taskIndex))
   }
 
-  // Clear all tasks
   const clearTasks = () => {
-    setTasks([])
+    setTasks({})
   }
 
   React.useEffect(() => {

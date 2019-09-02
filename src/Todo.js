@@ -2,15 +2,15 @@ import React from 'react'
 import { Check, Trash } from 'react-feather'
 
 const Todo = (props) => {
-  
+
   const completeTask = () => {
     props.task.completed = !props.task.completed
-    props.updateTask(props.task)
+    props.updateTask(props.index, props.task)
   }
 
   const handleChange = (event) => {
     props.task.text = event.target.value
-    props.updateTask(props.task)
+    props.updateTask(props.index, props.task)
   }
 
   return (
@@ -32,7 +32,7 @@ const Todo = (props) => {
         </textarea>
       </div>
       <div
-        onClick={() => props.deleteTask(props.task.index) }
+        onClick={() => props.deleteTask(props.index) }
         className="br2 ph3 pv1 pointer mb2 ml2 dim bg-near-white red flex items-center">
         <Trash size={18} />
       </div>

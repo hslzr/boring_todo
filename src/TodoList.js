@@ -8,6 +8,7 @@ const TodoList = (props) => {
       return(
         <Todo
           task={elem[1]}
+          index={elem[0]}
           key={elem[0]}
           deleteTask={props.deleteTask}
           updateTask={props.onUpdate} />

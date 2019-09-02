@@ -10,7 +10,6 @@ const initialTasks = {
   2136: {text: 'Demo 3', completed: false}
 }
 
-
 export default () => {
   const [tasks, setTasks] = React.useState(
     JSON.parse(localStorage.getItem('localTasks')) || initialTasks
@@ -23,18 +22,16 @@ export default () => {
     setTasks(stateCopy)
   }
 
-  const updateTask = (targetTask) => {
-    setTasks(tasks.map(task => {
-      if (task.index === targetTask.index) {
-        return targetTask
-      } else {
-        return task
-      }
-    }))
+  const updateTask = (targetIndex, targetTask) => {
+    let stateCopy = Object.assign({}, tasks)
+    stateCopy[targetIndex] = targetTask
+    setTasks(stateCopy)
   }
 
   const deleteTask = (taskIndex) => {
-    setTasks(tasks.filter(item => item.index !== taskIndex))
+    let stateCopy = Object.assign({}, tasks)
+    delete stateCopy[taskIndex]
+    setTasks(stateCopy)
   }
 
   const clearTasks = () => {

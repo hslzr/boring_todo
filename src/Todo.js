@@ -14,14 +14,14 @@ const Todo = (props) => {
   }
 
   return (
-    <li className="flex content-stretch">
+    <li className="flex content-stretch todo-item">
       <div
-        className="bg-green near-white br2 ph3 pv1 pointer mb2 mr2 dim flex items-center"
+        className="todo-complete-button bg-green near-white br2 ph3 pv1 pointer mb2 mr2 dim flex items-center"
         onClick={completeTask}>
         <Check  />
       </div>
       <div
-        className={"br2 ph3 pv1 mb2 " + (props.task.completed ? 'bg-near-white' : 'bg-light-gray')}
+        className={"todo-content br2 ph3 pv1 mb2 " + (props.task.completed ? 'bg-near-white' : 'bg-light-gray')}
         style={{flexGrow: 2}}>
         <textarea
           style={{outline: 0, resize: 'none'}}

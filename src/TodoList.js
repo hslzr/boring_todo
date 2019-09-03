@@ -17,7 +17,7 @@ const TodoList = (props) => {
   }
 
   return(
-    <div className="pa4-l pa3">
+    <div className="pa4-l pa3 todo-list">
       <div className="mw7 center">
         <button 
           onClick={props.clearTasks}
@@ -26,7 +26,7 @@ const TodoList = (props) => {
           Clear Tasks
         </button>
       </div>
-      <ul className="list pl0 ml0 mw7 b--light-silver br2 center">
+      <ul className="list pl0 ml0 mw7 b--light-silver br2 center todo-list-list">
         {renderTodos(props.tasks)}
       </ul>
     </div>
